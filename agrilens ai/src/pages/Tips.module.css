@@ -1,0 +1,81 @@
+.header { text-align: center; padding: 2rem 0 2.5rem; max-width: 540px; margin: 0 auto; }
+.header h1 { margin-bottom: 0.5rem; }
+
+.section { margin-bottom: 3rem; }
+.sectionTitle { margin-bottom: 1.25rem; font-size: 1.2rem; }
+
+.tipsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.tipCard { display: flex; flex-direction: column; gap: 8px; }
+.tipIcon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius);
+  background: var(--green-50);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brand);
+  flex-shrink: 0;
+}
+.tipCard h3 { font-size: 14px; }
+.tipCard p  { font-size: 13px; line-height: 1.6; }
+
+.aiSection {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+.aiHeader { margin-bottom: 1.25rem; }
+.aiHeader h2 { font-size: 1.2rem; margin-bottom: 4px; }
+.aiHeader p  { font-size: 14px; }
+
+.aiControls {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.aiControls .form-group { min-width: 180px; }
+
+.aiResults { margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+
+.alertBox {
+  background: var(--amber-50);
+  border: 1px solid var(--amber-100);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--amber-700);
+  margin-bottom: 1rem;
+}
+
+.kvkCard {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--green-50);
+  border-color: var(--green-200);
+}
+.kvkIcon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius);
+  background: var(--green-100);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brand);
+  flex-shrink: 0;
+}
+.kvkCard h3 { margin-bottom: 4px; }
+.kvkCard p  { font-size: 14px; }
+
+@media (max-width: 900px) {
+  .tipsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .tipsGrid { grid-template-columns: 1fr; }
+  .aiControls { flex-direction: column; }
+  .aiControls .form-group { width: 100%; }
+}

@@ -1,0 +1,27 @@
+.header { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+.header h1 { margin-bottom: 0.75rem; }
+
+.techCard { display: flex; flex-direction: column; gap: 8px; }
+.techIcon {
+  width: 40px; height: 40px;
+  border-radius: var(--radius);
+  background: var(--green-50);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brand);
+  margin-bottom: 4px;
+}
+.techCard h3 { font-size: 14px; }
+.techCard p  { font-size: 13px; line-height: 1.6; }
+
+.disclaimer {
+  background: var(--amber-50);
+  border: 1px solid var(--amber-100);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+}
+.disclaimer h3 { font-size: 1rem; color: var(--amber-700); margin-bottom: 8px; }
+.disclaimer p  { font-size: 14px; color: var(--amber-700); line-height: 1.6; }
+
+.cta { text-align: center; padding: 3rem 0; }
+.cta h2 { margin-bottom: 1rem; }
