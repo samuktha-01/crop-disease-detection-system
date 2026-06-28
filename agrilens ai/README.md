@@ -1,4 +1,4 @@
-# 🌿 KrishiDoc — AI Crop Disease Diagnosis
+# 🌿 CropHealth AI — AI Crop Disease Diagnosis
 
 AI-powered crop disease, pest, and nutritional deficiency diagnosis for Indian farmers. Built with React + Vite + Claude Vision AI.
 
@@ -38,7 +38,7 @@ npm run preview   # preview production build locally
 
 ## Project structure
 ```
-krishidoc/
+CropHealth AI/
 ├── src/
 │   ├── components/       # Navbar, Footer
 │   ├── pages/            # Home, Diagnose, Tips, History, About

@@ -28,7 +28,7 @@ export default function Navbar() {
       <div className={`container ${styles.inner}`}>
         <Link to="/" className={styles.logo}>
           <div className={styles.logoIcon}><Leaf size={18} /></div>
-          <span className={styles.logoText}>KrishiDoc</span>
+          <span className={styles.logoText}>CropHealth AI</span>
           <span className={styles.logoBadge}>AI</span>
         </Link>
 

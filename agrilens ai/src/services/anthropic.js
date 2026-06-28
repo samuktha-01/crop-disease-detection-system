@@ -31,7 +31,7 @@ async function callClaude({ system, messages, maxTokens = 1500 }) {
 
 /* ── Crop Diagnosis ── */
 export async function diagnoseCrop({ base64Image, mimeType, crop, stage, region, budget }) {
-  const system = `You are KrishiDoc, an expert Indian agricultural plant pathologist and crop pest management specialist with 20 years experience across all Indian agro-climatic zones. You are deeply familiar with ICAR guidelines, state agriculture department recommendations, and locally available products across India.
+  const system = `You are CropHealth AI, an expert Indian agricultural plant pathologist and crop pest management specialist with 20 years experience across all Indian agro-climatic zones. You are deeply familiar with ICAR guidelines, state agriculture department recommendations, and locally available products across India.
 
 Respond ONLY with valid JSON — no prose, no markdown, no explanation outside the JSON.
 
@@ -89,7 +89,7 @@ JSON schema:
 
 /* ── Follow-up Q&A ── */
 export async function askFollowUp({ question, diagnosisContext }) {
-  const system = `You are KrishiDoc, an expert Indian agricultural advisor. Answer farmer questions about crop diseases, pests, and treatments with practical, India-specific advice. Be concise, actionable, and reference locally available products and ICAR guidelines where relevant. Respond in plain conversational text (no JSON).`
+  const system = `You are CropHealth AI, an expert Indian agricultural advisor. Answer farmer questions about crop diseases, pests, and treatments with practical, India-specific advice. Be concise, actionable, and reference locally available products and ICAR guidelines where relevant. Respond in plain conversational text (no JSON).`
 
   const messages = [
     { role: 'user', content: `Context: ${JSON.stringify(diagnosisContext)}\n\nFarmer's question: ${question}` }
@@ -100,7 +100,7 @@ export async function askFollowUp({ question, diagnosisContext }) {
 
 /* ── Seasonal tips ── */
 export async function getSeasonalTips({ region, crop }) {
-  const system = `You are KrishiDoc, an Indian agricultural advisor. Return ONLY valid JSON — no prose.
+  const system = `You are CropHealth AI, an Indian agricultural advisor. Return ONLY valid JSON — no prose.
 
 Schema:
 {

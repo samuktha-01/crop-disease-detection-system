@@ -16,8 +16,8 @@ export default function About() {
   return (
     <div className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
       <div className={styles.header}>
-        <h1>How KrishiDoc works</h1>
-        <p>KrishiDoc combines smartphone photography with frontier AI to give every Indian farmer access to expert crop disease diagnosis — instantly and affordably.</p>
+        <h1>How CropHealth AI works</h1>
+        <p>CropHealth AI combines smartphone photography with frontier AI to give every Indian farmer access to expert crop disease diagnosis — instantly and affordably.</p>
       </div>
 
       <div className="grid-3" style={{ marginBottom: '3rem' }}>
@@ -32,7 +32,7 @@ export default function About() {
 
       <div className={styles.disclaimer}>
         <h3>Important note</h3>
-        <p>KrishiDoc is a first-response diagnostic assistant. For severe outbreaks, unusual symptoms, or before applying any chemical treatment for the first time, please verify advice with your local agricultural officer or Krishi Vigyan Kendra (KVK). The AI can make mistakes, especially with poor-quality photos or ambiguous symptoms.</p>
+        <p>CropHealth AI is a first-response diagnostic assistant. For severe outbreaks, unusual symptoms, or before applying any chemical treatment for the first time, please verify advice with your local agricultural officer or Krishi Vigyan Kendra (KVK). The AI can make mistakes, especially with poor-quality photos or ambiguous symptoms.</p>
         <div style={{ marginTop: '1rem', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <a href="https://icar.org.in" target="_blank" rel="noreferrer" className="btn btn-secondary">ICAR portal</a>
           <a href="https://kvk.icar.gov.in" target="_blank" rel="noreferrer" className="btn btn-secondary">Find your KVK</a>

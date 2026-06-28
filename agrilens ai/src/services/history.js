@@ -1,7 +1,7 @@
 // ── services/history.js ──
 // Saves and retrieves diagnosis history from localStorage
 
-const KEY = 'krishidoc_history'
+const KEY = 'CropHealth AI_history'
 
 export function saveToHistory({ imageDataUrl, result, meta }) {
   const existing = getHistory()

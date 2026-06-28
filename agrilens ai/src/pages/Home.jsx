@@ -78,7 +78,7 @@ export default function Home() {
       {/* Features */}
       <section className="section container">
         <div className={styles.sectionHead}>
-          <h4>What KrishiDoc does</h4>
+          <h4>What CropHealth AI does</h4>
           <h2>Everything a farmer needs to protect yield</h2>
         </div>
         <div className="grid-3" style={{ marginTop: '2.5rem' }}>

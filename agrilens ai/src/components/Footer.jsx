@@ -10,7 +10,7 @@ export default function Footer() {
         <div className={styles.brand}>
           <div className={styles.logoRow}>
             <div className={styles.logoIcon}><Leaf size={16} /></div>
-            <span className={styles.logoText}>KrishiDoc AI</span>
+            <span className={styles.logoText}>CropHealth AI AI</span>
           </div>
           <p className={styles.tagline}>
             AI-powered crop diagnosis for every Indian farmer.
@@ -35,7 +35,7 @@ export default function Footer() {
       </div>
       <div className={styles.bottom}>
         <div className="container">
-          <p>© {new Date().getFullYear()} KrishiDoc. For advisory use — verify with your local agriculture officer for serious outbreaks.</p>
+          <p>© {new Date().getFullYear()} CropHealth AI. For advisory use — verify with your local agriculture officer for serious outbreaks.</p>
         </div>
       </div>
     </footer>
