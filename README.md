@@ -6,17 +6,17 @@ CropHealth AI is an AI-powered web application designed to help farmers identify
 
 ##  Features
 
-* 📷 Upload crop images from a smartphone or computer
-* 🤖 AI-powered crop disease detection
-* 🐛 Pest identification
-* 🌿 Nutrient deficiency analysis
-* 💊 Organic, chemical, and cultural treatment recommendations
-* 💰 Estimated treatment cost in Indian Rupees (₹)
-* 🌾 India-specific farming recommendations
-* 📚 ICAR-based agricultural guidance
-* 📱 Responsive and mobile-friendly interface
-* 📖 Seasonal farming tips
-* 📜 Diagnosis history
+*  Upload crop images from a smartphone or computer
+*  AI-powered crop disease detection
+*  Pest identification
+*  Nutrient deficiency analysis
+*  Organic, chemical, and cultural treatment recommendations
+*  Estimated treatment cost in Indian Rupees (₹)
+*  India-specific farming recommendations
+*  ICAR-based agricultural guidance
+*  Responsive and mobile-friendly interface
+*  Seasonal farming tips
+*  Diagnosis history
 
 ---
 
