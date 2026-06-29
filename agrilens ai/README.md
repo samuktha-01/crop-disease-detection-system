@@ -1,67 +1,163 @@
-# 🌿 CropHealth AI — AI Crop Disease Diagnosis
+# 🌱 CropHealth AI
 
-AI-powered crop disease, pest, and nutritional deficiency diagnosis for Indian farmers. Built with React + Vite + Claude Vision AI.
+CropHealth AI is an AI-powered web application designed to help farmers identify **crop diseases, pest infestations, and nutrient deficiencies** using smartphone images. The system provides intelligent diagnosis along with treatment recommendations based on Indian agricultural practices, cost constraints, and sustainable farming methods.
 
-## Features
-- 📸 Smartphone photo analysis for diseases, pests, deficiencies
-- 🌱 Organic-first treatment recommendations
-- 💰 Budget-aware advice in ₹ per acre
-- 🗺️ India-specific — 28 states, ICAR guidelines, local product names
-- 📋 Diagnosis history saved on device
-- 💬 Follow-up Q&A with the AI
+---
 
-## Quick start
+## 📌 Features
 
-### 1. Install dependencies
+* 📷 Upload crop images from a smartphone or computer
+* 🤖 AI-powered crop disease detection
+* 🐛 Pest identification
+* 🌿 Nutrient deficiency analysis
+* 💊 Organic, chemical, and cultural treatment recommendations
+* 💰 Estimated treatment cost in Indian Rupees (₹)
+* 🌾 India-specific farming recommendations
+* 📚 ICAR-based agricultural guidance
+* 📱 Responsive and mobile-friendly interface
+* 📖 Seasonal farming tips
+* 📜 Diagnosis history
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React.js
+* Vite
+* JavaScript
+* CSS Modules
+
+### AI
+
+* Google Gemini API (Current Version)
+
+### Future Enhancements
+
+* TensorFlow / PyTorch Crop Disease Detection Model
+* FastAPI Backend
+* PostgreSQL Database
+* User Authentication
+* Weather Integration
+* Admin Dashboard
+
+---
+
+## 📂 Project Structure
+
+```
+crop-disease-detection-system/
+
+├── agrilens ai/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── styles/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── .env
+│   ├── package.json
+│   ├── vite.config.js
+│   └── README.md
+```
+
+---
+
+## 🚀 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/samuktha-01/crop-disease-detection-system.git
+```
+
+Navigate to the project
+
+```bash
+cd crop-disease-detection-system
+cd "agrilens ai"
+```
+
+Install dependencies
+
 ```bash
 npm install
 ```
 
-### 2. Add your gemini API key
-Open `.env` and replace `your_api_key_here`:
-```
-VITE_gemini_API_KEY=sk-ant-xxxxxxxxxx
-```
-Get your key at https://console.gemini.com
+---
 
-### 3. Run the dev server
+## 🔑 Environment Variables
+
+Create a `.env` file inside the project folder.
+
+```
+VITE_GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+```
+
+Get a free API key from Google AI Studio.
+
+---
+
+## ▶️ Run the Project
+
+Start the development server
+
 ```bash
 npm run dev
 ```
-Opens at http://localhost:3000
 
-### 4. Build for production
-```bash
-npm run build
-npm run preview   # preview production build locally
+Open your browser and visit
+
+```
+http://localhost:5173
 ```
 
-## Project structure
-```
-CropHealth AI/
-├── src/
-│   ├── components/       # Navbar, Footer
-│   ├── pages/            # Home, Diagnose, Tips, History, About
-│   ├── services/
-│   │   ├── gemini.js  # All Claude API calls
-│   │   └── history.js    # Local storage for history
-│   ├── styles/
-│   │   └── globals.css   # Design system tokens + base styles
-│   ├── App.jsx
-│   └── main.jsx
-├── public/
-│   └── favicon.svg
-├── index.html
-├── vite.config.js
-├── package.json
-└── .env                  # Your API key (never commit this)
-```
+---
 
-## Deploying
-- **Vercel**: `npx vercel` — add `VITE_gemini_API_KEY` in Vercel dashboard → Settings → Environment Variables
-- **Netlify**: drag `dist/` folder after `npm run build` — add env var in Netlify dashboard
-- **GitHub Pages**: use `vite-plugin-gh-pages` or GitHub Actions
+## 🧠 How It Works
 
-## Notes
-- The API key is used directly from the browser (client-side). For production, proxy API calls through a backend (Node/Express/Next.js API route) to keep the key secure.
-- Diagnosis history is stored in `localStorage` — device-only, no server.
+1. Upload an image of the affected crop.
+2. Select the crop type, growth stage, region, and budget.
+3. The AI analyzes the image.
+4. The system identifies possible diseases, pests, or nutrient deficiencies.
+5. Personalized treatment recommendations are generated.
+6. Farmers receive prevention tips and ICAR-based guidance.
+
+---
+
+## 🎯 Future Scope
+
+* Real-time disease detection using deep learning
+* Multi-language support (Tamil, Hindi, Telugu, Kannada, Malayalam)
+* Voice-based farmer assistant
+* Weather-based disease prediction
+* Soil health analysis
+* Nearby agricultural support centers
+* Government scheme recommendations
+* Farmer login and personalized dashboard
+
+---
+
+## 📸 Screenshots
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+
+---
+
+## 👨‍💻 Developer
+
+**Samuktha**
+
+GitHub: https://github.com/samuktha-01
+
+---
+
+## 📄 License
+
+This project is developed for educational and research purposes.
