@@ -4,12 +4,12 @@ import { Brain, Leaf, MapPin, IndianRupee, ShieldCheck, Database } from 'lucide-
 import styles from './About.module.css'
 
 const tech = [
-  { icon: Brain, title: 'Claude Vision AI', desc: 'Anthropic\'s Claude claude-sonnet-4-6 model with multimodal vision analyses visible symptoms with plant-pathology-expert-level accuracy.' },
+  { icon: Brain, title: 'Claude Vision AI', desc: 'gemini\'s Claude claude-sonnet-4-6 model with multimodal vision analyses visible symptoms with plant-pathology-expert-level accuracy.' },
   { icon: Database, title: 'ICAR knowledge base', desc: 'Recommendations reference Indian Council of Agricultural Research bulletins and state agriculture department guidelines.' },
   { icon: MapPin, title: 'Agro-climatic awareness', desc: 'The AI understands India\'s 15 agro-climatic zones — advice accounts for your monsoon pattern, soil type, and available local inputs.' },
   { icon: Leaf, title: 'Bio-pesticide first', desc: 'The system always suggests organic and bio-pesticide options before recommending chemical interventions.' },
   { icon: IndianRupee, title: 'Budget-tiered advice', desc: 'Treatments are ranked from free household remedies up to commercial interventions, in ₹ per acre estimates.' },
-  { icon: ShieldCheck, title: 'Privacy by design', desc: 'Photos are sent directly to Anthropic\'s API for analysis. We store nothing on a server — history stays on your device.' },
+  { icon: ShieldCheck, title: 'Privacy by design', desc: 'Photos are sent directly to gemini\'s API for analysis. We store nothing on a server — history stays on your device.' },
 ]
 
 export default function About() {

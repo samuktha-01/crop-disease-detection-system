@@ -17,12 +17,12 @@ AI-powered crop disease, pest, and nutritional deficiency diagnosis for Indian f
 npm install
 ```
 
-### 2. Add your Anthropic API key
+### 2. Add your gemini API key
 Open `.env` and replace `your_api_key_here`:
 ```
-VITE_ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxx
+VITE_gemini_API_KEY=sk-ant-xxxxxxxxxx
 ```
-Get your key at https://console.anthropic.com
+Get your key at https://console.gemini.com
 
 ### 3. Run the dev server
 ```bash
@@ -43,7 +43,7 @@ CropHealth AI/
 │   ├── components/       # Navbar, Footer
 │   ├── pages/            # Home, Diagnose, Tips, History, About
 │   ├── services/
-│   │   ├── anthropic.js  # All Claude API calls
+│   │   ├── gemini.js  # All Claude API calls
 │   │   └── history.js    # Local storage for history
 │   ├── styles/
 │   │   └── globals.css   # Design system tokens + base styles
@@ -58,7 +58,7 @@ CropHealth AI/
 ```
 
 ## Deploying
-- **Vercel**: `npx vercel` — add `VITE_ANTHROPIC_API_KEY` in Vercel dashboard → Settings → Environment Variables
+- **Vercel**: `npx vercel` — add `VITE_gemini_API_KEY` in Vercel dashboard → Settings → Environment Variables
 - **Netlify**: drag `dist/` folder after `npm run build` — add env var in Netlify dashboard
 - **GitHub Pages**: use `vite-plugin-gh-pages` or GitHub Actions
 

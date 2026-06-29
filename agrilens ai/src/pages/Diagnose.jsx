@@ -4,7 +4,7 @@ import {
   CheckCircle2, ChevronDown, ChevronUp, Send, RotateCcw,
   AlertCircle, IndianRupee, ShieldAlert, Clock
 } from 'lucide-react'
-import { diagnoseCrop, askFollowUp } from '../services/anthropic.js'
+import { diagnoseCrop, askFollowUp } from '../services/gemini.js'
 import { saveToHistory } from '../services/history.js'
 import styles from './Diagnose.module.css'
 

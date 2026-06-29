@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Droplets, Bug, Leaf, Sun, Shield, Calendar, Zap, MapPin } from 'lucide-react'
-import { getSeasonalTips } from '../services/anthropic.js'
+import { getSeasonalTips } from '../services/gemini.js'
 import styles from './Tips.module.css'
 
 const REGIONS = ['Punjab / Haryana','Uttar Pradesh','Maharashtra','Karnataka','Tamil Nadu','Andhra Pradesh / Telangana','Gujarat','Madhya Pradesh','Rajasthan','West Bengal','Bihar','Odisha','Other']
