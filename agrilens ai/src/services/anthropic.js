@@ -1,120 +1,101 @@
-// ── services/anthropic.js ──
-// All Claude API calls live here. Add your API key to .env as VITE_ANTHROPIC_API_KEY
+import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const API_URL = 'https://api.anthropic.com/v1/messages'
-const MODEL   = 'claude-sonnet-4-6'
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY)
+const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
 
-async function callClaude({ system, messages, maxTokens = 1500 }) {
-  const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY
-  if (!apiKey) throw new Error('Missing VITE_ANTHROPIC_API_KEY in .env file')
+function buildPrompt(context) {
+  return `You are KrishiDoc, an expert Indian agricultural plant pathologist. ${context}
 
-  const res = await fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true',
-    },
-    body: JSON.stringify({ model: MODEL, max_tokens: maxTokens, system, messages }),
-  })
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}))
-    throw new Error(err.error?.message || `API error ${res.status}`)
-  }
-
-  const data = await res.json()
-  const raw = data.content.map(b => b.text || '').join('')
-  return raw.replace(/```json|```/g, '').trim()
-}
-
-/* ── Crop Diagnosis ── */
-export async function diagnoseCrop({ base64Image, mimeType, crop, stage, region, budget }) {
-  const system = `You are CropHealth AI, an expert Indian agricultural plant pathologist and crop pest management specialist with 20 years experience across all Indian agro-climatic zones. You are deeply familiar with ICAR guidelines, state agriculture department recommendations, and locally available products across India.
-
-Respond ONLY with valid JSON — no prose, no markdown, no explanation outside the JSON.
+Respond ONLY with valid JSON — no markdown, no prose, no backticks.
 
 JSON schema:
 {
   "diagnosis": {
-    "condition": "string — exact disease/pest/deficiency name",
+    "condition": "disease/pest/deficiency name",
     "type": "disease|pest|deficiency|healthy",
     "severity": "high|medium|low",
-    "confidence": 0-100,
-    "description": "2-3 sentences explaining what you observe and why you made this diagnosis"
+    "confidence": 85,
+    "description": "2-3 sentences on what you observe"
   },
-  "cause": "1-2 sentences on causative agent (pathogen name, pest species, or missing nutrient)",
-  "symptoms_visible": "Specific visible symptoms that confirm this diagnosis",
+  "cause": "causative agent in 1-2 sentences",
+  "symptoms_visible": "specific symptoms confirming diagnosis",
   "spread_risk": "high|medium|low",
   "urgency_days": 7,
   "treatments": [
     {
       "type": "organic",
-      "name": "Treatment name",
-      "detail": "Dosage, timing, application method, frequency",
+      "name": "treatment name",
+      "detail": "dosage, timing, application method",
       "cost_estimate": "₹XX per acre or Free",
-      "availability": "Specific shops/sources in India where available"
+      "availability": "where to get it in India"
     },
     {
       "type": "chemical",
-      "name": "Chemical name (generic + brand)",
-      "detail": "Active ingredient %, dosage per litre, spray schedule, safety precautions",
+      "name": "chemical name + Indian brand",
+      "detail": "active ingredient, dosage, safety notes",
       "cost_estimate": "₹XXX per acre",
-      "availability": "Available at district agri input dealers / IFFCO outlets"
+      "availability": "agri input dealers / IFFCO outlets"
     },
     {
       "type": "cultural",
-      "name": "Cultural practice",
-      "detail": "Specific agronomic action to take",
+      "name": "cultural practice",
+      "detail": "specific agronomic action",
       "cost_estimate": "Free / labour only",
-      "availability": "No purchase needed"
+      "availability": "no purchase needed"
     }
   ],
-  "prevention": "2-3 sentences on preventing recurrence — India-specific, season-aware",
-  "icar_reference": "Specific ICAR bulletin or KVK recommendation if applicable",
-  "affected_crops_nearby": ["list of other crops that could be affected if this spreads"]
+  "prevention": "2-3 India-specific prevention sentences",
+  "icar_reference": "relevant ICAR or KVK recommendation",
+  "affected_crops_nearby": ["other crops at risk"]
 }`
+}
 
-  const userContent = base64Image
-    ? [
-        { type: 'image', source: { type: 'base64', media_type: mimeType, data: base64Image } },
-        { type: 'text', text: `Crop: ${crop || 'not specified'}. Growth stage: ${stage || 'not specified'}. Region: ${region || 'India'}. Farmer budget: ${budget || 'medium'}. Diagnose any disease, pest infestation, or nutritional deficiency visible. Prioritise organic and bio-pesticide options first.` }
-      ]
-    : [{ type: 'text', text: `Crop: ${crop}. Growth stage: ${stage}. Region: ${region}. Budget: ${budget}. Provide a realistic example diagnosis for a common problem in this crop for this region and season.` }]
+/* ── Crop Diagnosis ── */
+export async function diagnoseCrop({ base64Image, mimeType, crop, stage, region, budget }) {
+  const context = `Crop: ${crop || 'unspecified'}. Stage: ${stage || 'unspecified'}. Region: ${region || 'India'}. Budget: ${budget || 'medium'}. Prioritise organic solutions first.`
 
-  const json = await callClaude({ system, messages: [{ role: 'user', content: userContent }] })
-  return JSON.parse(json)
+  let result
+
+  if (base64Image) {
+    const imagePart = { inlineData: { data: base64Image, mimeType: mimeType || 'image/jpeg' } }
+    const textPart = { text: buildPrompt(context) }
+    result = await model.generateContent([imagePart, textPart])
+  } else {
+    result = await model.generateContent(buildPrompt(context + ' No image provided — give a realistic example diagnosis for this crop and region.'))
+  }
+
+  const raw = result.response.text().replace(/```json|```/g, '').trim()
+  return JSON.parse(raw)
 }
 
 /* ── Follow-up Q&A ── */
 export async function askFollowUp({ question, diagnosisContext }) {
-  const system = `You are CropHealth AI, an expert Indian agricultural advisor. Answer farmer questions about crop diseases, pests, and treatments with practical, India-specific advice. Be concise, actionable, and reference locally available products and ICAR guidelines where relevant. Respond in plain conversational text (no JSON).`
+  const prompt = `You are KrishiDoc, an expert Indian agricultural advisor. Answer this farmer's question with practical India-specific advice referencing locally available products and ICAR guidelines where relevant. Be concise and actionable.
 
-  const messages = [
-    { role: 'user', content: `Context: ${JSON.stringify(diagnosisContext)}\n\nFarmer's question: ${question}` }
-  ]
+Diagnosis context: ${JSON.stringify(diagnosisContext)}
 
-  return callClaude({ system, messages, maxTokens: 600 })
+Farmer's question: ${question}`
+
+  const result = await model.generateContent(prompt)
+  return result.response.text()
 }
 
-/* ── Seasonal tips ── */
+/* ── Seasonal Tips ── */
 export async function getSeasonalTips({ region, crop }) {
-  const system = `You are CropHealth AI, an Indian agricultural advisor. Return ONLY valid JSON — no prose.
+  const prompt = `You are KrishiDoc, an Indian agricultural advisor. Give seasonal crop protection tips for Region: ${region || 'India'}, Crop: ${crop || 'general'}.
+
+Respond ONLY with valid JSON — no markdown, no backticks.
 
 Schema:
 {
   "season": "current season name",
   "tips": [
-    { "category": "string", "icon": "one of: water|bug|leaf|sun|shield|calendar", "title": "string", "detail": "2 sentences" }
+    { "category": "string", "icon": "water|bug|leaf|sun|shield|calendar", "title": "string", "detail": "2 sentences" }
   ],
-  "alert": "string or null — any urgent advisory for this region/crop right now"
+  "alert": "urgent advisory string or null"
 }`
 
-  const json = await callClaude({
-    system,
-    messages: [{ role: 'user', content: `Region: ${region || 'India'}. Crop: ${crop || 'general'}. Give 6 seasonal tips.` }],
-    maxTokens: 800
-  })
-  return JSON.parse(json)
+  const result = await model.generateContent(prompt)
+  const raw = result.response.text().replace(/```json|```/g, '').trim()
+  return JSON.parse(raw)
 }
