@@ -35,7 +35,7 @@ export default function About() {
         <p>CropHealth AI is a first-response diagnostic assistant. For severe outbreaks, unusual symptoms, or before applying any chemical treatment for the first time, please verify advice with your local agricultural officer or Krishi Vigyan Kendra (KVK). The AI can make mistakes, especially with poor-quality photos or ambiguous symptoms.</p>
         <div style={{ marginTop: '1rem', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <a href="https://icar.org.in" target="_blank" rel="noreferrer" className="btn btn-secondary">ICAR portal</a>
-          <a href="https://kvk.icar.gov.in" target="_blank" rel="noreferrer" className="btn btn-secondary">Find your KVK</a>
+          
         </div>
       </div>
 

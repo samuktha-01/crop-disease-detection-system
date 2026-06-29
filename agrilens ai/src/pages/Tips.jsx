@@ -14,7 +14,7 @@ const staticTips = [
   { icon: 'water', title: 'Avoid waterlogging', detail: 'Most fungal diseases — blast, blight, downy mildew — thrive when water sits for 24+ hours. Maintain proper bund drainage especially in monsoon.' },
   { icon: 'bug', title: 'Use sticky yellow traps', detail: 'Hang yellow sticky traps (1 per 25 sq m) from transplanting onwards to monitor and catch whiteflies, thrips, and leafminers before populations explode.' },
   { icon: 'shield', title: 'Rotate crops every season', detail: 'A rice–wheat–legume rotation breaks pest and disease cycles naturally. Legumes also fix atmospheric nitrogen, reducing your fertiliser cost next season.' },
-  { icon: 'sun', title: 'Follow a spray calendar', detail: 'Preventive fungicide 15–20 days after transplant cuts blast and blight incidence significantly. Contact your local KVK for a state-specific spray schedule card (usually free).' },
+  { icon: 'sun', title: 'Follow a spray calendar', detail: 'Preventive fungicide 15–20 days after transplant cuts blast and blight incidence significantly. Contact your local agriculture officer for a state-specific spray schedule card (usually free).' },
 ]
 
 export default function Tips() {
@@ -116,17 +116,18 @@ export default function Tips() {
         </div>
       </section>
 
-      {/* KVK callout */}
+      {/* ICAR callout */}
       <div className={`card ${styles.kvkCard}`}>
         <div className={styles.kvkIcon}><MapPin size={20} /></div>
         <div>
-          <h3>Find your local KVK</h3>
-          <p>Krishi Vigyan Kendras provide free soil testing, disease-resistant seeds, and expert visits. There are 722 KVKs across India — one is near you.</p>
-          <a href="https://kvk.icar.gov.in" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ marginTop: '0.75rem', display: 'inline-flex' }}>
-            Find your KVK →
+          <h3>ICAR — Indian Council of Agricultural Research</h3>
+          <p>Access official crop disease guidelines, pest management bulletins, and research publications from India's top agricultural body.</p>
+          <a href="https://icar.org.in" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ marginTop: '0.75rem', display: 'inline-flex' }}>
+            Visit ICAR Portal →
           </a>
         </div>
       </div>
+
     </div>
   )
 }

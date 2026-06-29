@@ -29,7 +29,7 @@ export default function Footer() {
             <h5>Learn</h5>
             <Link to="/about">How it works</Link>
             <a href="https://icar.org.in" target="_blank" rel="noreferrer">ICAR Portal</a>
-            <a href="https://kvk.icar.gov.in" target="_blank" rel="noreferrer">Find your KVK</a>
+            
           </div>
         </div>
       </div>
